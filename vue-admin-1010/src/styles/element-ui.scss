@@ -1,0 +1,128 @@
+//  //to reset element-ui default css
+// .el-upload {
+//   input[type="file"] {
+//     display: none !important;
+//   }
+// }
+
+// .el-upload__input {
+//   display: none;
+// }
+
+// //暂时性解决diolag 问题 https://github.com/ElemeFE/element/issues/2461
+// .el-dialog {
+//   transform: none;
+//   left: 0;
+//   position: relative;
+//   margin: 0 auto;
+// }
+
+// //element ui upload
+// .upload-container {
+//   .el-upload {
+//     width: 100%;
+//     .el-upload-dragger {
+//       width: 100%;
+//       height: 200px;
+//     }
+//   }
+// }
+
+
+// .el-button--mini, 
+//   .el-button--small{
+//    font-size:10px;
+// }
+
+
+
+/////////////////////////////////////////////////////////////
+.aaaa{
+  padding: 0px;
+  .el-table__header tr,
+  .el-table__header th {
+    padding: 0 !important;
+    height: 32px !important ;
+}
+.el-table__body tr,
+  .el-table__body td {
+    padding: 0 !important ; 
+    height: 32px !important;
+}
+
+
+ }
+
+ .zz{
+  .cell
+  {max-height: 23px !important;
+    overflow: hidden !important;
+  } 
+}
+
+
+ .el-tree /deep/ .el-tree-node__expand-icon.expanded
+{
+    -webkit-transform: rotate(0deg);
+    transform: rotate(0deg);
+}
+//有子节点 且未展开
+.el-tree /deep/ .el-icon-caret-right:before
+{
+    background: url("../images/20200513175158841.png") no-repeat 0 3px;
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background-size: 16px;
+}
+//有子节点 且已展开
+.el-tree /deep/ .el-tree-node__expand-icon.expanded.el-icon-caret-right:before
+{
+    background: url("../images/20200513175158841.png") no-repeat 0 3px;
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background-size: 16px;
+}
+//没有子节点
+.el-tree /deep/.el-tree-node__expand-icon.is-leaf::before
+{
+    background: url("../images/20200513175217280.png") no-repeat 0 3px;
+    content: '';
+    display: block;
+    width: 16px;
+    height: 16px;
+    font-size: 16px;
+    background-size: 16px;
+}
+
+
+.el-scrollbar .el-scrollbar__wrap {overflow-x: hidden;}
+.el-tree>.el-tree-node{
+
+height: 350px; 
+min-width: 100%;
+display:inline-block;
+}
+
+.el-tree-node:focus > .el-tree-node__content {
+  background-color: #ccc !important;
+}
+
+.el-submenu__title{
+  font-size: 12px;
+}
+.el-menu-item  {
+  //vertical-align: middle;
+  font-size: 12px;
+}
+.el-form-item__label{
+  font-size: 12px;
+}
+.el-tree-node__label{
+  font-size: 12px;
+}
