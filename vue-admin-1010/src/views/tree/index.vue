@@ -1,78 +1,85 @@
 <template>
-  <div class="app-container">
-    <el-input v-model="filterText" placeholder="Filter keyword" style="margin-bottom:30px;" />
+  <div class="pdf" v-show="fileType === 'pdf'">
+    <pdf
+      ref="pdf"
+      :src="pdfUrl"
+      :page="currentPage"
+      @num-pages="pageCount=$event"
+      @page-loaded="currentPage=$event"
+      @loaded="loadPdfHandler">
+    </pdf>
 
-    <el-tree
-      ref="tree2"
-      :data="data2"
-      :props="defaultProps"
-      :filter-node-method="filterNode"
-      class="filter-tree"
-      default-expand-all
-    />
-
+    <div class="bottom-btn" >
+      <p class="arrow">
+        <span @click="changePdfPage(0)" class="turn" :class="{grey: currentPage==1}">上一页</span>
+        {{currentPage}} / {{pageCount}}
+        <span @click="changePdfPage(1)" class="turn" :class="{grey: currentPage==pageCount}">下一页</span>
+      </p>
+    </div>
   </div>
+
 </template>
-
-<script>
+<script >
+import pdf from "vue-pdf";
 export default {
-
+      components:{
+      pdf
+  },
   data() {
     return {
-      filterText: '',
-      data2: [{
-        id: 1,
-        label: 'Level one 1',
-        children: [{
-          id: 4,
-          label: 'Level two 1-1',
-          children: [{
-            id: 9,
-            label: 'Level three 1-1-1'
-          }, {
-            id: 10,
-            label: 'Level three 1-1-2'
-          }]
-        }]
-      }, {
-        id: 2,
-        label: 'Level one 2',
-        children: [{
-          id: 5,
-          label: 'Level two 2-1'
-        }, {
-          id: 6,
-          label: 'Level two 2-2'
-        }]
-      }, {
-        id: 3,
-        label: 'Level one 3',
-        children: [{
-          id: 7,
-          label: 'Level two 3-1'
-        }, {
-          id: 8,
-          label: 'Level two 3-2'
-        }]
-      }],
-      defaultProps: {
-        children: 'children',
-        label: 'label'
-      }
-    }
+      pdfUrl:'',// pdf文件地址
+      currentPage: 0, // pdf文件页码
+      pageCount: 0, // pdf文件总页数
+      fileType: 'pdf', // 文件类型
+      page:0,
+      name:''
+　 } 
   },
-  watch: {
-    filterText(val) {
-      this.$refs.tree2.filter(val)
-    }
-  },
+  mounted(){
+    // const toast = this.$toast.loading({
+    //   duration: 0,
+    //   message: '加载中...',
+    //   forbidClick: true,
+    //   loadingType: 'spinner',
+    // });
+    //这里给pdfUrl赋值
+    // this.pdfUrl = "../../src/images/511BMP133PM.pdf";
+    
+    console.log("进来了")
+ 
+    // this.currentPage=this.$route.params.name
 
-  methods: {
-    filterNode(value, data) {
-      if (!value) return true
-      return data.label.indexOf(value) !== -1
+  },
+  created(){
+  
+    console.log("进来了create")
+       this.page=this.$route.query.page
+       this.name=this.$route.query.name
+       console.log(this.name)
+       this.name='511BMP133PM'
+         this.pdfUrl=`../../src/images/${this.name}.pdf`;
+         console.log( this.pdfUrl)
+          this.pdfUrl='C:\\Users\\xhj\\Desktop\\511BMP133PM.pdf'
+        this.pdfUrl = pdf.createLoadingTask(this.pdfUrl)
+  },
+  methods:{
+    // 改变PDF页码,val传过来区分上一页下一页的值,0上一页,1下一页
+    changePdfPage (val) {
+      // console.log(val)
+      if (val === 0 && this.currentPage > 1) {
+        this.currentPage--
+        // console.log(this.currentPage)
+      }
+      if (val === 1 && this.currentPage < this.pageCount) {
+        this.currentPage++
+        // console.log(this.currentPage)
+      }
+    },
+    loadPdfHandler(e){
+      // this.$toast.clear();
+      console.log( this.page)
+      this.currentPage = Number( this.page) // 加载的时候先加载第一页
     }
   }
-}
+};
 </script>
-

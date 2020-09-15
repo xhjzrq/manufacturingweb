@@ -112,7 +112,7 @@ export default {
     height: 50px;
     display: inline-block;
     position: absolute;
-    right: 35px;
+    right: 24px;
     .avatar-wrapper {
       cursor: pointer;
       margin-top: 5px;

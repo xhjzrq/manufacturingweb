@@ -2,11 +2,11 @@
   <div class="app-container">
     <el-container>
       <el-header style="height:40px" class="aaaa">
-        <el-row >
+        <el-row  :gutter="50">
           <el-col :span="15">
           <el-form :inline="true" class="demo-form-inline">
-            <el-form-item label="船只编号">
-             <el-input v-model="input" placeholder="船只编号"></el-input>
+            <el-form-item label="工程编号">
+             <el-input v-model="input" placeholder="工程编号"></el-input>
             </el-form-item>
             <el-form-item label="制作图号">
               <el-input v-model="tuhao" placeholder="制作图号"></el-input>
@@ -16,8 +16,8 @@
             </el-form-item>
           </el-form>
 </el-col>
-         <el-col :span="7">&nbsp;</el-col>
-          <el-col :span="2"> <el-button type="primary" size="small"  @click="aaa">导出EXCEL</el-button> </el-col>
+        
+          <el-col :span="9" style="text-align: right;" > <el-button type="primary" size="small"  @click="aaa">导出EXCEL</el-button> </el-col>
         </el-row>
         <!-- <el-col :span="8">&nbsp;</el-col>
           <el-col :span="2"> <el-button type="primary" size="small"  @click="aaa">导出EXCEL</el-button> </el-col>
@@ -56,21 +56,21 @@
             :row-style="iRowStyle"
             :cell-style="iCellStyle"
           >
-            <el-table-column prop="project" label="工程编号"></el-table-column>
-            <el-table-column prop="module" label="分段"></el-table-column>
-            <el-table-column prop="drawingno" label="制作图号"></el-table-column>
-            <el-table-column prop="zzjbh" label="部件号" width="120"></el-table-column>
-            <el-table-column prop="zzjmc" label="部件名称"></el-table-column>
-            <el-table-column prop="zzjxh" label="型号"></el-table-column>
-            <el-table-column prop="zzjgg" label="规格"></el-table-column>
-            <el-table-column prop="zzjcz" label="材质"></el-table-column>
-            <el-table-column prop="quantity" label="数量"></el-table-column>
-            <el-table-column prop="weight" label="重量kg"></el-table-column>
-            <el-table-column prop="unit" label="单位"></el-table-column>
-            <el-table-column prop="paintarea" label="面积"></el-table-column>
-            <el-table-column prop="paintcode" label="涂装代码"></el-table-column>
-            <el-table-column prop="dept" label="设计科室设计人员"></el-table-column>
-            <el-table-column prop="createdate" label="建立时间" :show-overflow-tooltip="true"></el-table-column>
+            <el-table-column prop="project" label="工程编号"  width="100"  align="center"></el-table-column>
+             <el-table-column prop="drawingno" label="制作图号" width="120"  align="center"></el-table-column>
+            <el-table-column prop="module" label="分段" width="80"  align="center"></el-table-column>
+            <el-table-column prop="zzjbh" label="部件号" width="150"  align="center"></el-table-column>
+            <el-table-column prop="zzjmc" label="部件名称" align="center"></el-table-column>
+            <el-table-column prop="zzjxh" label="型号" align="center"></el-table-column>
+            <el-table-column prop="zzjgg" label="规格" align="center"></el-table-column>
+            <el-table-column prop="zzjcz" label="材质" align="center"></el-table-column>
+            <el-table-column prop="quantity" label="数量" align="center"></el-table-column>
+            <el-table-column prop="weight" label="重量kg" align="center"></el-table-column>
+            <el-table-column prop="unit" label="单位" align="center"></el-table-column>
+            <el-table-column prop="paintarea" label="面积" align="center"></el-table-column>
+            <el-table-column prop="paintcode" label="涂装代码" align="center"></el-table-column>
+            <el-table-column prop="dept" label="设计科室设计人员" align="center"></el-table-column>
+            <el-table-column prop="createdate" label="建立时间" :show-overflow-tooltip="true" align="center"></el-table-column>
           </el-table>
         <div style="margin-top:15px"></div>
          <span style="font-weight:bold;">制作图部件材料数据</span>
@@ -83,17 +83,17 @@
             :row-style="iRowStyle"
             :cell-style="iCellStyle"
           >
-            <el-table-column prop="project" label="工程编号"></el-table-column>
-             <el-table-column prop="drawingno" label="制作图号"></el-table-column>
-            <el-table-column prop="zjbh" label="部件号"></el-table-column>
-            <el-table-column prop="compdh" label="标准" ></el-table-column>
-            <el-table-column prop="compmc" label="材料名称"></el-table-column>
-            <el-table-column prop="compcz" label="材质"></el-table-column>
-            <el-table-column prop="compweight" label="重量kg"></el-table-column>
-            <el-table-column prop="compcount" label="数量"></el-table-column>
-            <el-table-column prop="area" label="面积"></el-table-column>
-            <el-table-column prop="page" label="页码"></el-table-column>
-            <el-table-column prop="users" label="设计人员"></el-table-column>
+            <el-table-column prop="project" label="工程编号" width="100"  align="center"></el-table-column>
+             <el-table-column prop="drawingNo" label="制作图号" width="120"  align="center"></el-table-column>
+            <el-table-column prop="zzjbh" label="部件号" width="150"  align="center"></el-table-column>
+            <el-table-column prop="compDH" label="标准" align="center" ></el-table-column>
+            <el-table-column prop="compMC" label="材料名称" align="center"></el-table-column>
+            <el-table-column prop="compCZ" label="材质" align="center"></el-table-column>
+            <el-table-column prop="compWeight" label="重量kg" align="center"></el-table-column>
+            <el-table-column prop="compCount" label="数量" align="center"></el-table-column>
+            <el-table-column prop="area" label="面积" align="center"></el-table-column>
+            <el-table-column prop="page" label="页码" align="center"></el-table-column>
+            <el-table-column prop="users" label="设计人员" align="center"></el-table-column>
            
           </el-table>
 

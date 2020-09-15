@@ -24,6 +24,8 @@ import Layout from '../views/layout/Layout'
 export const constantRouterMap = [
   { path: '/login', component: () => import('@/views/login/index'), hidden: true },
   { path: '/404', component: () => import('@/views/404'), hidden: true },
+  { path: '/pdf', component: () => import('@/views/tree/index'), hidden: true },
+
 
   {
     path: '/',
@@ -58,12 +60,12 @@ export const constantRouterMap = [
         meta: { title: '铁舾生产设计数据管理', icon: 'table' }
       }
       ,
-      {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: '单元生产设计数据管理', icon: 'table' }
-      }
+      // {
+      //   path: 'tree',
+      //   name: 'Tree',
+      //   component: () => import('@/views/tree/index'),
+      //   meta: { title: '单元生产设计数据管理', icon: 'table' }
+      // }
     ]
   },
 

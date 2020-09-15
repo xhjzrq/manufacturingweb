@@ -2,11 +2,17 @@
   <div class="app-container">
     <el-container>
       <el-header style="height:40px" class="aaaa">
-        <el-row >
+
+        <el-row>
+    <!-- <div>
+      <pdf src="C:\Users\xhj\Desktop\511BMP133PM.pdf"></pdf>
+    </div> -->
+        </el-row>
+        <el-row  :gutter="50">
           <el-col :span="15">
           <el-form :inline="true" class="demo-form-inline">
-            <el-form-item label="船只编号">
-             <el-input v-model="input" placeholder="船只编号"></el-input>
+            <el-form-item label="工程编号">
+             <el-input v-model="input" placeholder="工程编号"></el-input>
             </el-form-item>
             <el-form-item label="制作图号">
               <el-input v-model="tuhao" placeholder="制作图号"></el-input>
@@ -16,8 +22,8 @@
             </el-form-item>
           </el-form>
 </el-col>
-         <el-col :span="7">&nbsp;</el-col>
-          <el-col :span="2"> <el-button type="primary" size="small"  @click="aaa">导出EXCEL</el-button> </el-col>
+        
+          <el-col :span="9" style="text-align: right;" > <el-button type="primary" size="small"  @click="aaa">导出EXCEL</el-button> </el-col>
         </el-row>
         <!-- <el-row>
           <el-col :span="15">aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</el-col>
@@ -44,7 +50,7 @@
           ></el-tree>
         </el-aside>
 
-        <el-main>
+        <el-main >
           <div class="zz">
             <span style="font-weight:bold;">制作图部件数据</span>
             <el-table
@@ -56,23 +62,36 @@
               :row-style="iRowStyle"
               :cell-style="iCellStyle"
             >
-              <el-table-column prop="project" label="工程编号"></el-table-column>
-              <el-table-column prop="tribonModule" label="分段"></el-table-column>
-              <el-table-column prop="pipeNo" label="部件号"></el-table-column>
-              <el-table-column prop="drawingNo" label="制作图号" width="120"></el-table-column>
-              <el-table-column prop="inTreatment" label="内表面处理"></el-table-column>
-              <el-table-column prop="outTreatment" label="外表面处理"></el-table-column>
-              <el-table-column prop="inPaintCode" label="内涂装代码"></el-table-column>
-              <el-table-column prop="outPaintCode" label="外涂装代码"></el-table-column>
-              <el-table-column prop="iArea" label="内表面积"></el-table-column>
-              <el-table-column prop="outArea" label="外表面积"></el-table-column>
-              <el-table-column prop="pressure" label="压力Mpa"></el-table-column>
-              <el-table-column prop="pipeWeight" label="重量Kg"></el-table-column>
-              <el-table-column prop="page" label="页码"></el-table-column>
-              <el-table-column prop="users" label="设计人员"></el-table-column>
-              <el-table-column prop="createDate" label="建立时间" :show-overflow-tooltip="true"></el-table-column>
-              <el-table-column prop="modifyDate" label="修改时间" :show-overflow-tooltip="true"></el-table-column>
-              <el-table-column prop="pipeLineCode" label="生产线编码"></el-table-column>
+              <el-table-column prop="project" label="工程编号" width="100"  align="center"></el-table-column>
+               <el-table-column prop="drawingno" label="制作图号" width="120"  align="center"></el-table-column>
+              <el-table-column prop="tribonModule" label="分段" width="80"  align="center"></el-table-column>
+              <el-table-column prop="pipeNo" label="部件号" width="150"  align="center"></el-table-column>
+             
+              <el-table-column prop="inTreatment" label="内表面处理" width="90"  align="center"></el-table-column>
+              <el-table-column prop="outTreatment" label="外表面处理" width="90"  align="center"></el-table-column>
+              <el-table-column prop="inPaintCode" label="内涂装代码" width="90"  align="center"></el-table-column>
+              <el-table-column prop="outPaintCode" label="外涂装代码" width="90"  align="center"></el-table-column>
+              <el-table-column prop="iArea" label="内表面积"  align="center"></el-table-column>
+              <el-table-column prop="outArea" label="外表面积"  align="center"></el-table-column>
+              <el-table-column prop="pressure" label="压力Mpa"  align="center"></el-table-column>
+              <el-table-column prop="pipeWeight" label="重量Kg"  align="center"></el-table-column>
+              <el-table-column prop="page" label="页码"  align="center"></el-table-column>
+              <el-table-column prop="page" label="页码"  align="center">
+
+                <template slot-scope="scope">
+            <el-button
+              type="primary"
+              icon="el-icon-edit"
+              circle
+              size="mini"
+               @click="update(scope.row)"
+            ></el-button>
+          </template>
+              </el-table-column>
+              <el-table-column prop="users" label="设计人员" align="center"></el-table-column>
+              <el-table-column prop="createDate" label="建立时间" :show-overflow-tooltip="true" align="center"></el-table-column>
+              <el-table-column prop="modifyDate" label="修改时间" :show-overflow-tooltip="true" align="center"></el-table-column>
+              <el-table-column prop="pipeLineCode" label="生产线编码" align="center"></el-table-column>
             </el-table>
             <div style="margin-top:15px"></div>
             <span style="font-weight:bold;">制作图部件材料数据</span>
@@ -85,19 +104,19 @@
               :row-style="iRowStyle"
               :cell-style="iCellStyle"
             >
-              <el-table-column prop="drawingNo" label="制作图号"></el-table-column>
-              <el-table-column prop="project" label="工程编号"></el-table-column>
-              <el-table-column prop="tribonModule" label="分段"></el-table-column>
-              <el-table-column prop="pipeNo" label="部件号"></el-table-column>
-              <el-table-column prop="mtrlPos" label="材料序号"></el-table-column>
-              <el-table-column prop="mtrlFlag" label="标识"></el-table-column>
-              <el-table-column prop="mtrlName" label="名称"></el-table-column>
-              <el-table-column prop="mtrlGG" label="规格"></el-table-column>
-              <el-table-column prop="mtrlXHCZ" label="型号材质"></el-table-column>
-              <el-table-column prop="mtrlQuantity" label="数量"></el-table-column>
-              <el-table-column prop="mtrlUnit" label="单位"></el-table-column>
-              <el-table-column prop="mtrlBuildLength" label="制造长度mm"></el-table-column>
-              <el-table-column prop="mtrlWeight" label="重量Kg"></el-table-column>
+             <el-table-column prop="project" label="工程编号" width="100"  align="center"></el-table-column>
+              <el-table-column prop="drawingNo" label="制作图号" width="120"  align="center"></el-table-column>
+              <el-table-column prop="tribonModule" label="分段" width="80"  align="center"></el-table-column>
+              <el-table-column prop="pipeNo" label="部件号" width="150"  align="center"></el-table-column>
+              <el-table-column prop="mtrlPos" label="材料序号" align="center"></el-table-column>
+              <el-table-column prop="mtrlFlag" label="标识" align="center"></el-table-column>
+              <el-table-column prop="mtrlName" label="名称" align="center"></el-table-column>
+              <el-table-column prop="mtrlGG" label="规格" align="center"></el-table-column>
+              <el-table-column prop="mtrlXHCZ" label="型号材质" align="center"></el-table-column>
+              <el-table-column prop="mtrlQuantity" label="数量" align="center"></el-table-column>
+              <el-table-column prop="mtrlUnit" label="单位" align="center"></el-table-column>
+              <el-table-column prop="mtrlBuildLength" label="制造长度mm" align="center"></el-table-column>
+              <el-table-column prop="mtrlWeight" label="重量Kg" align="center"></el-table-column>
             </el-table>
 
             <div style="margin-top:15px"></div>
@@ -111,23 +130,24 @@
               :row-style="iRowStyle"
               :cell-style="iCellStyle"
             >
-              <el-table-column prop="drawingNo" label="制作图号"></el-table-column>
-              <el-table-column prop="project" label="工程编号"></el-table-column>
-              <el-table-column prop="tribonModule" label="分段"></el-table-column>
-              <el-table-column prop="pipeNo" label="部件号"></el-table-column>
-              <el-table-column prop="jGXH" label="加工序号"></el-table-column>
-              <el-table-column prop="jGFlag" label="标识"></el-table-column>
+            <el-table-column prop="project" label="工程编号"  width="100"  align="center"></el-table-column>
+              <el-table-column prop="drawingNo" label="制作图号" width="120"  align="center"></el-table-column>
+              
+              <el-table-column prop="tribonModule" label="分段" width="80"  align="center"></el-table-column>
+              <el-table-column prop="pipeNo" label="部件号" width="150"  align="center"></el-table-column>
+              <el-table-column prop="jGXH" label="加工序号" align="center"></el-table-column>
+              <el-table-column prop="jGFlag" label="标识" align="center"></el-table-column>
 
-              <el-table-column prop="startBend" label="起弯点"></el-table-column>
-              <el-table-column prop="straightPipe" label="直管段"></el-table-column>
-              <el-table-column prop="pipeLine" label="身长"></el-table-column>
-              <el-table-column prop="zJBend" label="转角"></el-table-column>
-              <el-table-column prop="qJTurn" label="曲角"></el-table-column>
-              <el-table-column prop="inclination" label="夹角"></el-table-column>
-              <el-table-column prop="gLExcess" label="割量"></el-table-column>
-              <el-table-column prop="radius" label="弯模"></el-table-column>
-              <el-table-column prop="preTurn" label="预转角"></el-table-column>
-              <el-table-column prop="accConnection" label="附件连接"></el-table-column>
+              <el-table-column prop="startBend" label="起弯点" align="center"></el-table-column>
+              <el-table-column prop="straightPipe" label="直管段" align="center"></el-table-column>
+              <el-table-column prop="pipeLine" label="身长" align="center"></el-table-column>
+              <el-table-column prop="zJBend" label="转角" align="center"></el-table-column>
+              <el-table-column prop="qJTurn" label="曲角" align="center"></el-table-column>
+              <el-table-column prop="inclination" label="夹角" align="center"></el-table-column>
+              <el-table-column prop="gLExcess" label="割量" align="center"></el-table-column>
+              <el-table-column prop="radius" label="弯模" align="center"></el-table-column>
+              <el-table-column prop="preTurn" label="预转角" align="center"></el-table-column>
+              <el-table-column prop="accConnection" label="附件连接" align="center"></el-table-column>
             </el-table>
           </div>
         </el-main>
@@ -140,6 +160,7 @@
 import { export_json_to_excel_sheet } from "@/utils/excel";
 import { getList, getA, getexcel } from "@/api/table";
 import { Message, MessageBox } from "element-ui";
+import pdf from 'vue-pdf'
 
 export default {
   data() {
@@ -152,7 +173,7 @@ export default {
       //     input:"",
       //     tuhao:""
       // },
-      input: "",
+      input: "C10K-1",
       tuhao: "",
       inputt: "",
       treedata: [
@@ -257,7 +278,18 @@ export default {
         document.body.removeChild(link);
       });
     },
+    update(data){
+      alert(data.drawingno);
+      let routeData = this.$router.resolve({ path: '/pdf' ,query: {
+          page: data.page,
+          name: data.drawingno
+        }});
+      window.open(routeData.href, '_blank');
+    }
   },
+  components: {
+    pdf
+  }
 };
 </script>
 
